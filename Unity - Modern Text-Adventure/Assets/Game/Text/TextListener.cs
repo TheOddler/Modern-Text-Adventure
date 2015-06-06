@@ -9,7 +9,6 @@ using System.Linq;
  */
 public class TextListener : MonoBehaviour
 {
-
     [SerializeField]
     InputField _input;
 
@@ -20,10 +19,12 @@ public class TextListener : MonoBehaviour
 
     void ReactToText(string text)
     {
-        List<TextReactor> reactors = GetComponentsInChildren<TextReactor>().ToList().FindAll(r => r.WillReactTo(text));
-        if (reactors.Count > 0) {
+        // find the reactors that should react
+        List<TextHandler> reactors = GetComponentsInChildren<TextHandler>().ToList().FindAll(r => r.ShouldReactTo(text));
+        if (reactors.Count > 0)
+        {
             reactors[Random.Range(0, reactors.Count)].React();
         }
+        _input.text = "";
     }
-
 }

@@ -6,7 +6,7 @@ public class LogMessage : MonoBehaviour, Effect
     [SerializeField]
     string _message = "Bebug";
 
-    public void Do()
+    public void Activate()
     {
         Debug.Log(_message);
     }
